@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    max-width: 1920px;
+}
+
+#menu {
+    width: 100%x;
+    height: 100px;
+    background-color: #2c2f73;
+    display: flex;
+    align-items: center;
+}
+
+#menu select, #menu button {
+    margin-left: 20px;
+    padding: 5px;
+    background-color: #4d52bd;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    color: white;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    overflow: hidden;
+    -webkit-appearance: none;
+    height: 10px;
+    background-color: white;
+    border-radius: 10px;
+}

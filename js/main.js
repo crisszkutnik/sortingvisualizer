@@ -28,7 +28,16 @@ let itemArray = []; //Array of items
 
 function generateArray(newValue) {
     itemArray = [];
-    for(let i = 0; i < newValue; i++) itemArray[i] = parseInt(430 * Math.random());
+
+    let arrayLeft = 450 - Math.ceil(itemArray.length / 2) * 15;
+
+    for(let i = 0; i < newValue; i++) {
+        let object = {
+            value: parseInt(430 * Math.random()),
+            centerX: arrayLeft + 15 * i
+        }
+        itemArray[i] = object;
+    }
 }
 
 generateArray(10);
@@ -45,13 +54,13 @@ function displayArray() {
     ctx.beginPath();
 
     for(let i = arrayCenter; i > 0; i--) {
-        ctx.strokeRect(centerX - i * 15, centerY - itemArray[i], 10, itemArray[i]);
-        ctx.fillRect(centerX - i * 15, centerY - itemArray[i], 10, itemArray[i]);
+        ctx.strokeRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
+        ctx.fillRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
     }
 
     for(let i = 0; i < Math.ceil((itemArray.length - 1) / 2); i++) {
-        ctx.strokeRect(centerX + i * 15, centerY - itemArray[i], 10, itemArray[i]);
-        ctx.fillRect(centerX + i * 15, centerY - itemArray[i], 10, itemArray[i]);
+        ctx.strokeRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
+        ctx.fillRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
     }
 }
 

@@ -18,7 +18,7 @@ body {
 
 #menu select, #menu button {
     margin-left: 20px;
-    padding: 5px;
+    padding: 10px;
     background-color: #4d52bd;
     border: none;
     border-radius: 15px;
@@ -26,10 +26,9 @@ body {
     color: white;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-    overflow: hidden;
-    -webkit-appearance: none;
-    height: 10px;
-    background-color: white;
-    border-radius: 10px;
+#menu input {
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
 }

@@ -7,10 +7,10 @@ function bubbleSort() {
     do {
         change = false;
 
-        for(let i = 1; i < n - 1; i++) {
+        for(let i = 1; i < n; i++) {
             if(itemArray[i-1].value > itemArray[i].value) {
-                aux = itemArray[i + 1];
-                itemArray[i + 1] = itemArray[i];
+                aux = itemArray[i - 1];
+                itemArray[i - 1] = itemArray[i];
                 itemArray[i] = aux;
                 change = true;
             }

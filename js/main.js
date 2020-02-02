@@ -9,7 +9,6 @@ class arrayItem {
 }
 //
 
-
 let arraySize = 10; //Size of the array. Global variable for convenience
 
 //Modify array size on input

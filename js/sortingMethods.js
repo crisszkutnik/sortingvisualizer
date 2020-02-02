@@ -1,16 +1,20 @@
 'use strict'
 
 function bubbleSort() {
-    let aux;
     let n = itemArray.length;
+    let change, aux;
 
-    for(let i = 0; i < n; i++) { 
-            for(let j = 0; j < n - i - 1; j++) { 
-                if (itemArray[j].value > itemArray[j + 1].value) { 
-                    aux = itemArray[j]; 
-                    itemArray[j] = itemArray[j + 1]; 
-                    itemArray[j + 1] = aux; 
-                } 
-            } 
-        } 
-} 
+    do {
+        change = false;
+
+        for(let i = 1; i < n - 1; i++) {
+            if(itemArray[i-1].value > itemArray[i].value) {
+                aux = itemArray[i + 1];
+                itemArray[i + 1] = itemArray[i];
+                itemArray[i] = aux;
+                change = true;
+            }
+        }
+        n--;
+    }while(change);
+}

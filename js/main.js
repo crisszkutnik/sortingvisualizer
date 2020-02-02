@@ -1,5 +1,15 @@
 'use strict'
 
+// Define class
+class arrayItem {
+    constructor(centerX) {
+        this.value = parseInt(430 * Math.random());
+        this.centerX = centerX;
+    }
+}
+//
+
+
 let arraySize = 10; //Size of the array. Global variable for convenience
 
 //Modify array size on input
@@ -9,7 +19,7 @@ document.querySelector('#menu input').addEventListener('change', () => {
 
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, 1200, 450);
+    ctx.clearRect(0, 0, 1200, 450); //CLear canvas to display new array
 
     if(newValue <= 50 && newValue > 1) {
         arraySize = newValue;
@@ -32,36 +42,24 @@ function generateArray(newValue) {
     let arrayLeft = 450 - Math.ceil(itemArray.length / 2) * 15;
 
     for(let i = 0; i < newValue; i++) {
-        let object = {
-            value: parseInt(430 * Math.random()),
-            centerX: arrayLeft + 15 * i
-        }
-        itemArray[i] = object;
+        itemArray[i] = new arrayItem(arrayLeft + 15 * i);
     }
 }
 
 generateArray(10);
 
 function displayArray() {
-    let centerX = 600;
     let centerY = 450;
-
-    let arrayCenter = Math.ceil((itemArray.length - 1) / 2);
     
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
 
     ctx.beginPath();
 
-    for(let i = arrayCenter; i > 0; i--) {
-        ctx.strokeRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
-        ctx.fillRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
-    }
-
-    for(let i = 0; i < Math.ceil((itemArray.length - 1) / 2); i++) {
-        ctx.strokeRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
-        ctx.fillRect(itemArray[i].centerX, centerY - itemArray[i].value, 10, itemArray[i].value);
-    }
+    itemArray.forEach(element => {
+        ctx.strokeRect(element.centerX, centerY - element.value, 10, element.value);
+        ctx.fillRect(element.centerX, centerY - element.value, 10, element.value);
+    });
 }
 
 displayArray();

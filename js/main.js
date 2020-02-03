@@ -13,7 +13,7 @@ let arraySize = 10; //Size of the array. Global variable for convenience
 
 //Modify array size on input
 
-document.querySelector('#menu input').addEventListener('change', () => {
+document.querySelector('#newArray').addEventListener('click', () => {
     let newValue = parseInt(document.querySelector('#menu input').value);
 
     const canvas = document.querySelector('canvas');
@@ -62,3 +62,9 @@ function displayArray() {
 }
 
 displayArray();
+
+document.querySelector('#sortStart').addEventListener('click', () => {
+    let sortingMethod = document.querySelector('select').value;
+
+    if(sortingMethod == 'bubble') bubbleSort();
+});

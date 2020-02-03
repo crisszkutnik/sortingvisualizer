@@ -1,10 +1,21 @@
 'use strict'
 
+const centerY = 450;
+
 // Define class
 class arrayItem {
     constructor(centerX) {
         this.value = parseInt(430 * Math.random());
         this.centerX = centerX;
+    }
+}
+
+class displayChange {
+    constructor(center1, center2, value1, value2) {
+        this.center1 = center1;
+        this.center2 = center2;
+        this.value1 = value1;
+        this.value2 = value2;
     }
 }
 //
@@ -48,7 +59,6 @@ function generateArray(newValue) {
 generateArray(10);
 
 function displayArray() {
-    let centerY = 450;
     
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
@@ -67,4 +77,6 @@ document.querySelector('#sortStart').addEventListener('click', () => {
     let sortingMethod = document.querySelector('select').value;
 
     if(sortingMethod == 'bubble') bubbleSort();
+    else if(sortingMethod == 'selection') selectionSort();
+    else if(sortingMethod == 'insertion') insertionSort();
 });

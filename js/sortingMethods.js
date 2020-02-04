@@ -1,6 +1,66 @@
 'use strict'
 
-let delay = 100;
+let delay = 1500;
+
+//
+// Swap functions
+//
+
+function swapDisplay(center1, center2, value1, value2, index, color1, color2) {
+
+    let coordinateY = 450;
+
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+
+    ctx.fillStyle = color1;
+
+    ctx.clearRect(center1 - 1, 0, 15, 450);
+    ctx.clearRect(center2 - 1, 0, 15, 450);
+
+    ctx.strokeRect(center1, coordinateY - value2, 10, value2);
+    ctx.fillRect(center1, coordinateY - value2, 10, value2);
+
+    ctx.fillStyle = color2;
+
+    ctx.strokeRect(center2, coordinateY - value1, 10, value1);
+    ctx.fillRect(center2, coordinateY - value1, 10, value1);
+
+    setTimeout(() => {
+        ctx.clearRect(center1 - 1, 0, 15, 450);
+        ctx.clearRect(center2 - 1, 0, 15, 450);
+
+        ctx.fillStyle = '#000000';
+
+        ctx.strokeRect(center1, coordinateY - value2, 10, value2);
+        ctx.fillRect(center1, coordinateY - value2, 10, value2);
+
+        ctx.strokeRect(center2, coordinateY - value1, 10, value1);
+        ctx.fillRect(center2, coordinateY - value1, 10, value1);
+    }, delay/2);
+}
+
+function swapValues(val1, val2) {
+    [itemArray[val1].centerX, itemArray[val2].centerX] = [itemArray[val2].centerX, itemArray[val1].centerX];
+    [itemArray[val1], itemArray[val2]] = [itemArray[val2], itemArray[val1]]
+}
+
+function displayChanges(allChanges) {
+    let n = itemArray.length - 1;
+    allChanges.forEach((element, index) => {
+        timeouts.push(
+            setTimeout(() => {
+                swapDisplay(element.center1, element.center2, element.value1, element.value2, index, '#ff0000', '#05961f');
+            }, delay * (index + 1))
+        )
+    });
+}
+
+//
+//   Sort functions
+//
 
 function bubbleSort() {
     let n = itemArray.length;
@@ -21,38 +81,7 @@ function bubbleSort() {
         n--;
     }while(change);
 
-    //Visual representation of sorting
-    allChanges.forEach((element, index) => {
-        timeouts.push(
-            setTimeout(() => {
-                swapDisplay(element.center1, element.center2, element.value1, element.value2)
-            }, delay * (index + 1))
-        )
-    });
-}
-
-function swapDisplay(center1, center2, value1, value2) {
-
-        let coordinateY = 450;
-
-        const canvas = document.querySelector('canvas');
-        const ctx = canvas.getContext('2d');
-
-        ctx.beginPath();
-
-        ctx.clearRect(center1 - 1, 0, 15, 450);
-        ctx.clearRect(center2 - 1, 0, 15, 450);
-
-        ctx.strokeRect(center1, coordinateY - value2, 10, value2);
-        ctx.fillRect(center1, coordinateY - value2, 10, value2);
-
-        ctx.strokeRect(center2, coordinateY - value1, 10, value1);
-        ctx.fillRect(center2, coordinateY - value1, 10, value1); 
-}
-
-function swapValues(val1, val2) {
-    [itemArray[val1].centerX, itemArray[val2].centerX] = [itemArray[val2].centerX, itemArray[val1].centerX];
-    [itemArray[val1], itemArray[val2]] = [itemArray[val2], itemArray[val1]]
+    displayChanges(allChanges);
 }
 
 function selectionSort() {
@@ -71,14 +100,7 @@ function selectionSort() {
             swapValues(min, i);
         }
     }
-    //Visual representation of sorting
-    allChanges.forEach((element, index) => {
-        timeouts.push(
-            setTimeout(() => {
-                swapDisplay(element.center1, element.center2, element.value1, element.value2)
-            }, delay * (index + 1))
-        )
-    });
+    displayChanges(allChanges);
 }
 
 function insertionSort() {
@@ -95,13 +117,52 @@ function insertionSort() {
             j--;
         }
     }
+    displayChanges(allChanges);
+}
 
-    //Visual representation of sorting
-    allChanges.forEach((element, index) => {
-        timeouts.push(
-            setTimeout(() => {
-                swapDisplay(element.center1, element.center2, element.value1, element.value2)
-            }, delay * (index + 1))
-        )
-    });
+function cocktailSort() {
+    let allChanges = [];
+    let change = true;
+    let start = 0, end = itemArray.length;
+
+    while(change) {
+        change = false;
+        
+        for(let i = start; i < end - 1; ++i) {
+            if(itemArray[i].value > itemArray[i + 1].value) {
+                allChanges.push(new displayChange(itemArray[i + 1].centerX, itemArray[i].centerX, itemArray[i + 1].value, itemArray[i].value));
+                swapValues(i, i + 1);
+                change = true;
+            }
+        }
+
+        if(!change) break;
+
+        change = false;
+        end--;
+
+        for(let i = end - 1; i >= start; i--) {
+            if(itemArray[i].value > itemArray[i + 1].value) {
+                allChanges.push(new displayChange(itemArray[i].centerX, itemArray[i + 1].centerX, itemArray[i].value, itemArray[i + 1].value));
+                swapValues(i, i + 1);
+                change = true;
+            }
+        }
+        start++;
+    }
+    displayChanges(allChanges);
+}
+
+function optimizedGnome() {
+    let allChanges = [];
+    for(let pos = 1; pos < itemArray.length; pos++) gnomeSort(pos, allChanges);
+    displayChanges(allChanges);
+}
+
+function gnomeSort(pos, allChanges) {
+    while(pos > 0 && itemArray[pos - 1].value > itemArray[pos].value) {
+        allChanges.push(new displayChange(itemArray[pos].centerX, itemArray[pos - 1].centerX, itemArray[pos].value, itemArray[pos - 1].value));
+        swapValues(pos, pos - 1);
+        pos--;
+    }
 }

@@ -66,6 +66,8 @@ function displayArray() {
 
     ctx.beginPath();
 
+    ctx.fillStyle = '#000000';
+
     itemArray.forEach(element => {
         ctx.strokeRect(element.centerX, centerY - element.value, 10, element.value);
         ctx.fillRect(element.centerX, centerY - element.value, 10, element.value);
@@ -79,6 +81,8 @@ document.querySelector('#sortStart').addEventListener('click', () => {
     if(sortingMethod == 'bubble') bubbleSort();
     else if(sortingMethod == 'selection') selectionSort();
     else if(sortingMethod == 'insertion') insertionSort();
+    else if(sortingMethod == 'cocktail') cocktailSort();
+    else if(sortingMethod == 'gnome') optimizedGnome();
 });
 
 //Initiall call functions

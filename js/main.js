@@ -1,4 +1,5 @@
 'use strict'
+let timeouts = []; //Timeouts are stored here in case they need to be cancelled
 
 const centerY = 450;
 
@@ -22,10 +23,12 @@ class displayChange {
 
 let arraySize = 10; //Size of the array. Global variable for convenience
 
-//Modify array size on input
-
+//Event handler to modify array size
 document.querySelector('#newArray').addEventListener('click', () => {
     let newValue = parseInt(document.querySelector('#menu input').value);
+
+    timeouts.forEach(element => clearTimeout(element));
+    timeouts = [];
 
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
@@ -56,8 +59,6 @@ function generateArray(newValue) {
     }
 }
 
-generateArray(10);
-
 function displayArray() {
     
     const canvas = document.querySelector('canvas');
@@ -71,8 +72,7 @@ function displayArray() {
     });
 }
 
-displayArray();
-
+//Event handler to start sorting
 document.querySelector('#sortStart').addEventListener('click', () => {
     let sortingMethod = document.querySelector('select').value;
 
@@ -80,3 +80,7 @@ document.querySelector('#sortStart').addEventListener('click', () => {
     else if(sortingMethod == 'selection') selectionSort();
     else if(sortingMethod == 'insertion') insertionSort();
 });
+
+//Initiall call functions
+generateArray(10);
+displayArray();

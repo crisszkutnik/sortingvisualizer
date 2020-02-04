@@ -13,7 +13,7 @@ delayChange.addEventListener('input', () => {
 // Swap functions
 //
 
-function swapDisplay(center1, center2, value1, value2, index, color1, color2) {
+function swapDisplay(center1, center2, value1, value2, color1, color2, pDel) {
 
     let coordinateY = 450;
 
@@ -46,7 +46,7 @@ function swapDisplay(center1, center2, value1, value2, index, color1, color2) {
 
         ctx.strokeRect(center2, coordinateY - value1, 10, value1);
         ctx.fillRect(center2, coordinateY - value1, 10, value1);
-    }, delay/2);
+    }, pDel/2);
 }
 
 function swapValues(val1, val2) {
@@ -54,15 +54,26 @@ function swapValues(val1, val2) {
     [itemArray[val1], itemArray[val2]] = [itemArray[val2], itemArray[val1]]
 }
 
-function displayChanges(allChanges) {
+/*function displayChanges(allChanges) {
     let n = itemArray.length - 1;
     allChanges.forEach((element, index) => {
         timeouts.push(
             setTimeout(() => {
-                swapDisplay(element.center1, element.center2, element.value1, element.value2, index, '#ff0000', '#05961f');
+                swapDisplay(element.center1, element.center2, element.value1, element.value2, '#ff0000', '#05961f');
             }, delay * (index + 1))
         )
     });
+}*/
+
+function displayChanges(allChanges) {
+    let n = itemArray.length - 1;
+    let i = 0;
+    let thisDel = delay;
+
+    mainInterval = setInterval(() => {
+            swapDisplay(allChanges[i].center1, allChanges[i].center2, allChanges[i].value1, allChanges[i].value2, '#ff0000', '#05961f', thisDel);
+            i++;
+    }, thisDel);
 }
 
 //

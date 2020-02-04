@@ -1,5 +1,5 @@
 'use strict'
-let timeouts = []; //Timeouts are stored here in case they need to be cancelled
+let mainInterval; //Timeouts are stored here in case they need to be cancelled
 
 const centerY = 450;
 
@@ -27,8 +27,7 @@ let arraySize = 10; //Size of the array. Global variable for convenience
 document.querySelector('#newArray').addEventListener('click', () => {
     let newValue = parseInt(document.querySelector('#menu input').value);
 
-    timeouts.forEach(element => clearTimeout(element));
-    timeouts = [];
+    clearInterval(mainInterval);
 
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');

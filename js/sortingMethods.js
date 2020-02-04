@@ -1,6 +1,6 @@
 'use strict'
 
-let delay = 1500;
+let delay = 100;
 
 //
 // Swap functions

@@ -52,7 +52,7 @@ let itemArray = []; //Array of items
 function generateArray(newValue) {
     itemArray = [];
 
-    let arrayLeft = 450 - Math.ceil(itemArray.length / 2) * 15;
+    let arrayLeft = 600 - Math.ceil(newValue / 2) * 15;
 
     for(let i = 0; i < newValue; i++) {
         itemArray[i] = new arrayItem(arrayLeft + 15 * i);

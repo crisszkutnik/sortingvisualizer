@@ -2,6 +2,13 @@
 
 let delay = 100;
 
+let delayChange = document.querySelector('div#menu div input');
+
+delayChange.addEventListener('input', () => {
+    delay = parseInt(delayChange.value);
+    document.querySelector('div#menu div p').innerHTML = delayChange.value + 'ms';
+})
+
 //
 // Swap functions
 //
@@ -161,7 +168,7 @@ function optimizedGnome() {
 
 function gnomeSort(pos, allChanges) {
     while(pos > 0 && itemArray[pos - 1].value > itemArray[pos].value) {
-        allChanges.push(new displayChange(itemArray[pos].centerX, itemArray[pos - 1].centerX, itemArray[pos].value, itemArray[pos - 1].value));
+        allChanges.push(new displayChange(itemArray[pos - 1].centerX, itemArray[pos].centerX, itemArray[pos - 1].value, itemArray[pos].value));
         swapValues(pos, pos - 1);
         pos--;
     }

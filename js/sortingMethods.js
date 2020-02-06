@@ -54,31 +54,17 @@ function swapValues(val1, val2) {
     [itemArray[val1], itemArray[val2]] = [itemArray[val2], itemArray[val1]]
 }
 
-/*function displayChanges(allChanges) {
-    let n = itemArray.length - 1;
-    allChanges.forEach((element, index) => {
-        timeouts.push(
-            setTimeout(() => {
-                swapDisplay(element.center1, element.center2, element.value1, element.value2, '#ff0000', '#05961f');
-            }, delay * (index + 1))
-        )
-    });
-}*/
-
 function displayChanges(allChanges) {
     let n = itemArray.length - 1;
     let i = 0;
     let thisDel = delay;
 
-    mainInterval = setInterval(() => {
-            swapDisplay(allChanges[i].center1, allChanges[i].center2, allChanges[i].value1, allChanges[i].value2, '#ff0000', '#05961f', thisDel);
-            i++;
-    }, thisDel);
+    allChanges.forEach((element, index) => {
+        setTimeout(() => {
+            swapDisplay(element.center1, element.center2, element.value1, element.value2, '#ff0000', '#05961f', thisDel);
+        }, index * delay);
+    });
 }
-
-//
-//   Sort functions
-//
 
 function bubbleSort() {
     let n = itemArray.length;

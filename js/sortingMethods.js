@@ -69,6 +69,9 @@ function displayChanges(allChanges) {
     mainInterval = setInterval(() => {
         swapDisplay(allChanges[i].center1, allChanges[i].center2, allChanges[i].value1, allChanges[i].value2, '#ff0000', '#05961f', thisDel);
         i++;
+
+        if(i == allChanges.length - 1) clearInterval(mainInterval);
+
     }, thisDel);
 }
 

@@ -1,6 +1,8 @@
 'use strict'
 let mainInterval; //Timeouts are stored here in case they need to be cancelled
 
+let timeouts = [];
+
 const centerY = 450;
 
 // Define class
@@ -50,8 +52,6 @@ let itemArray = []; //Array of items
 
 function generateArray(newValue) {
     itemArray = [];
-
-    clearInterval(mainInterval);
 
     let arrayLeft = 600 - Math.ceil(newValue / 2) * 15;
 

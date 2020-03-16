@@ -53,7 +53,7 @@ let itemArray = []; //Array of items
 function generateArray(newValue) {
     itemArray = [];
 
-    let arrayLeft = (document.querySelector('canvas').offsetWidth / 2) - Math.ceil(newValue / 2) * 15;
+    let arrayLeft = (900 / 2) - Math.ceil(newValue / 2) * 15;
 
     for(let i = 0; i < newValue; i++) {
         itemArray[i] = new arrayItem(arrayLeft + 15 * i);
@@ -96,10 +96,10 @@ displayArray();
 
 let canvas = document.querySelector('canvas');
 
-canvas.style.width = `${(window.innerWidth * 1200) / 1920}px`;
+canvas.style.width = `${(window.innerWidth * 900) / 1920}px`;
 canvas.style.heigth = `${(window.innerHeight * 450) / 1920}px`;
 
 window.addEventListener('resize', () => {
-    canvas.style.width = `${(window.innerWidth * 1200) / 1920}px`;
+    canvas.style.width = `${(window.innerWidth * 900) / 1920}px`;
     canvas.style.heigth = `${(window.innerHeight * 450) / 1920}px`;
 })

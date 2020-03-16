@@ -67,11 +67,6 @@ canvas {
         margin-left: 20px;
         padding: 10px;
     }
-
-    canvas {
-        width: 992;
-        height: 372;
-    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -84,11 +79,6 @@ canvas {
     #menu input {
         margin-left: 20px;
         padding: 10px;
-    }
-
-    canvas {
-        height: 288px;
-        width: 768px;
     }
 }
 
@@ -103,11 +93,6 @@ canvas {
         margin-left: 8px;
         padding: 6px;
     }
-
-    canvas {
-        height: 225px;
-        width: 600px;
-    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -120,10 +105,5 @@ canvas {
     #menu input {
         margin-left: 8px;
         padding: 3px;
-    }
-
-    canvas {
-        height: 187px;
-        width: 500px;
     }
 }

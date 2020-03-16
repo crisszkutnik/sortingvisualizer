@@ -89,3 +89,17 @@ document.querySelector('#sortStart').addEventListener('click', () => {
 //Initiall call functions
 generateArray(10);
 displayArray();
+
+//
+//  Responsiveness functions
+//
+
+let canvas = document.querySelector('canvas');
+
+canvas.style.width = `${(window.innerWidth * 1200) / 1920}px`;
+canvas.style.heigth = `${(window.innerHeight * 450) / 1920}px`;
+
+window.addEventListener('resize', () => {
+    canvas.style.width = `${(window.innerWidth * 1200) / 1920}px`;
+    canvas.style.heigth = `${(window.innerHeight * 450) / 1920}px`;
+})

@@ -17,18 +17,13 @@ body {
 }
 
 #menu select, #menu button {
-    margin-left: 20px;
-    padding: 10px;
+    border-radius: 15px;
+    color: white;
     background-color: #4d52bd;
     border: none;
-    border-radius: 15px;
-    font-size: 15px;
-    color: white;
 }
 
 #menu input {
-    margin-left: 20px;
-    padding: 10px;
     border-radius: 15px;
     border: none;
 }
@@ -37,6 +32,7 @@ canvas {
     display: block;
     margin: auto;
     overflow: scroll;
+    margin-top: 20px;
 }
 
 #menu div {
@@ -45,4 +41,89 @@ canvas {
     justify-content: center;
     align-items: center;
     color: white;
+}
+
+@media only screen and (min-width: 1200px) {
+    #menu select, #menu button {
+        margin-left: 20px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    #menu input {
+        margin-left: 20px;
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #menu select, #menu button {
+        margin-left: 20px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    #menu input {
+        margin-left: 20px;
+        padding: 10px;
+    }
+
+    canvas {
+        width: 992;
+        height: 372;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #menu select, #menu button {
+        margin-left: 20px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    #menu input {
+        margin-left: 20px;
+        padding: 10px;
+    }
+
+    canvas {
+        height: 288px;
+        width: 768px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    #menu select, #menu button {
+        margin-left: 8px;
+        padding: 7px;
+        font-size: 13px;
+    }
+
+    #menu input {
+        margin-left: 8px;
+        padding: 6px;
+    }
+
+    canvas {
+        height: 225px;
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #menu select, #menu button {
+        padding: 5px;
+        font-size: 10px;
+        margin-left: 8px;
+    }
+
+    #menu input {
+        margin-left: 8px;
+        padding: 3px;
+    }
+
+    canvas {
+        height: 187px;
+        width: 500px;
+    }
 }

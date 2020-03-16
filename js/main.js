@@ -51,6 +51,8 @@ let itemArray = []; //Array of items
 function generateArray(newValue) {
     itemArray = [];
 
+    clearInterval(mainInterval);
+
     let arrayLeft = 600 - Math.ceil(newValue / 2) * 15;
 
     for(let i = 0; i < newValue; i++) {

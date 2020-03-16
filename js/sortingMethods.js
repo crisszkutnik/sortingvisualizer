@@ -55,15 +55,21 @@ function swapValues(val1, val2) {
 }
 
 function displayChanges(allChanges) {
-    let n = itemArray.length - 1;
     let i = 0;
     let thisDel = delay;
 
-    allChanges.forEach((element, index) => {
+    //Delay is saved because if the user changes it while executing the animation it would cause a visual bug
+
+    /*allChanges.forEach((element, index) => {
         setTimeout(() => {
             swapDisplay(element.center1, element.center2, element.value1, element.value2, '#ff0000', '#05961f', thisDel);
         }, index * delay);
-    });
+    });*/
+
+    mainInterval = setInterval(() => {
+        swapDisplay(allChanges[i].center1, allChanges[i].center2, allChanges[i].value1, allChanges[i].value2, '#ff0000', '#05961f', thisDel);
+        i++;
+    }, thisDel);
 }
 
 function bubbleSort() {
